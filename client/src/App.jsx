@@ -1,25 +1,27 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Read from "./componenets/Read.jsx";
-import Write from "./componenets/Write.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Home.jsx";
+import Portfolio from "./components/Portfolio.jsx";
+import Blog from "./components/Blog.jsx";
+import ProjectUpdates from "./components/ProjectUpdates.jsx";
+import Read from "./components/Read.jsx";
+import Write from "./components/Write.jsx";
+import Navbar from "./components/NavBar.jsx";
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <div>
-          <span>
-            <Link to="/read">Read data from Server</Link>
-          </span>{" "}
-          <span>
-            <Link to="/write">Write data to Mongodb</Link>
-          </span>
+      <div>
+        <Navbar />
+        <div className="container mt-3">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/project-updates" element={<ProjectUpdates />} />
+            <Route path="/read" element={<Read />} />
+            <Route path="/write" element={<Write />} />
+          </Routes>
         </div>
-
-        <Routes>
-          <Route path="/read" element={<Read />} />
-          <Route path="/write" element={<Write />} />
-          <Route path="/" element={<Write />} />
-        </Routes>
       </div>
     </Router>
   );
