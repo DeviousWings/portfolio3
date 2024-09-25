@@ -46,11 +46,11 @@ function Navbar() {
               Read
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link className="nav-link" to="/write">
               Write
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>

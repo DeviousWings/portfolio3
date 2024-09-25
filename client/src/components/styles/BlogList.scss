@@ -1,0 +1,28 @@
+// src/styles/BlogList.scss
+.blog-list {
+    padding: 20px;
+    background-color: #f9f9f9;
+  
+    h2 {
+      margin-bottom: 10px;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        margin-bottom: 5px;
+  
+        a {
+          text-decoration: none;
+          color: #007bff;
+  
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  

@@ -1,4 +1,3 @@
-import "./styles/Hero.scss";
 import "./styles/main.scss";
 import logoimage from "./pic/logo.jpg";
 

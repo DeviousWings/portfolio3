@@ -1,0 +1,21 @@
+// src/styles/_blogPlate.scss
+.blog-plate {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+    background-color: red;
+  
+    h2 {
+      margin-bottom: 10px;
+    }
+  
+    p {
+      margin-bottom: 10px;
+    }
+  
+    small {
+      color: #666;
+    }
+  }
+  

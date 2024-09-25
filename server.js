@@ -3,6 +3,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 
 const DataModel = require("./DataModel");
+const BlogModel = require("./BlogModel");
 const connectDB = require("./Database");
 connectDB();
 
@@ -32,10 +33,42 @@ app.post("/writetodatabase", async (req, res) => {
   }
 });
 
+app.get("/latest-blog", async (req, res) => {
+  try {
+    const latestBlog = await BlogModel.findOne().sort({ createdAt: -1 });
+    res.json(latestBlog);
+  } catch (error) {
+    console.error("Error fetching latest blog: ", error);
+    res.status(500).send("Server error");
+  }
+});
+
+app.get("/blogs", async (req, res) => {
+  try {
+    const blogs = await BlogModel.find().sort({ createdAt: -1 });
+    res.json(blogs);
+  } catch (error) {
+    console.error("Error fetching blogs: ", error);
+    res.status(500).send("Server error");
+  }
+});
+
+app.get("/blogs/:id", async (req, res) => {
+  try {
+    const blog = await BlogModel.findById(req.params.id);
+    if (!blog) return res.status(404).send("Blog not found");
+    res.json(blog);
+  } catch (error) {
+    console.error("Error fetching blog: ", error);
+    res.status(500).send("Server error");
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT: ${PORT}`);
 });
+
 /*
 // OPTIONAL: FOR DEPLOYMENT
 //import path package

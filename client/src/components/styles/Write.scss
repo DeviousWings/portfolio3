@@ -1,0 +1,48 @@
+// src/styles/_write.scss
+.write {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+  
+    h2 {
+      margin-bottom: 20px;
+    }
+  
+    .form-group {
+      margin-bottom: 15px;
+  
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+  
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+  
+      textarea {
+        height: 150px;
+      }
+    }
+  
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+  

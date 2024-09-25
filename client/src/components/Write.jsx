@@ -1,31 +1,56 @@
 import { useState } from "react";
 import axios from "axios";
+import "./styles/main.scss";
 
-function Write() {
-  let [inputValue, setInputValue] = useState("");
+const Write = () => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
-  const saveData = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/writetodatabase", {
-        content: inputValue,
-      });
-      console.log("Data: ", inputValue);
-      alert("Data saved: ", inputValue);
+      const response = await axios.post(
+        "http://localhost:5000/writetodatabase",
+        {
+          title,
+          content,
+        }
+      );
+      alert(response.data.message);
+      setTitle("");
+      setContent("");
     } catch (error) {
-      console.log("error while saving dude: ", error.message);
+      console.error("Error posting blog:", error);
     }
   };
 
-  // prettier-ignore
   return (
-        <div>
-            <input type="string" placeholder="enter something"
-                value={inputValue}
-                onChange={e => setInputValue(e.target.value)}
-            />
-            <button onClick={saveData}> Save Data to MongoDB</button>
+    <div className="write">
+      <h2>Write a New Blog Post</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="title">Title:</label>
+          <input
+            type="text"
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
         </div>
-    );
-}
+        <div className="form-group">
+          <label htmlFor="content">Content:</label>
+          <textarea
+            id="content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
 
 export default Write;
